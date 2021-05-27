@@ -31,8 +31,8 @@ export function Filters(props) {
     <select value={props.size} onChange={props.handlerSize} className="select">
       <option value="all">Cualquier tamaño</option>
       <option value="small">Hotel pequeño</option>
-      <option value="Hotel mediano">Hotel mediano</option>
-      <option value="Hotel grande">Hotel grande</option>
+      <option value="medium">Hotel mediano</option>
+      <option value="big">Hotel grande</option>
     </select>
       </div>
     </div>
