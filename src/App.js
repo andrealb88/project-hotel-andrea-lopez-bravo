@@ -51,6 +51,11 @@ function App() {
           : hotel.price === 4;
       });
     }
+    if (country !== "Todos los paises") {
+      newHotels = newHotels.filter((hotel) => {
+        return country === hotel.country;
+      });
+    }
     if (dateFrom !== "" && dateTo !== "") {
       const newDateFrom = new Date(dateFrom);
       const newDateTo = new Date(dateTo);
@@ -66,20 +71,18 @@ function App() {
     setHotels(newHotels);
   };
 
-  //   return(
-  //     (size === "all" ? true :
+  // const filterHotels = () => {
+  //   const newDateFrom = new Date(dateFrom);
+  //   const newDateTo = new Date(DateTo);
+  //   newHotels = newHotels.filter(hotel) => {
+  //     if(size !== "all"){
+  //       return true}
+  //      { else if (size === "small")
+  //     return hotel.rooms <= 10) {
+  //       else if (size === "medium"){
+  //       return hotel.rooms > 10 && hotel.rooms <= 20}{
+  //         else {return hotel.rooms > 20})
 
-  //     (country === "Todos los paises" ? true :
-  //                                             hotel.country === country ) /* && */
-  // // /*  (price === "cualquier precio" ? true :
-  //                                           price === "$"? hotel.price === 1 :
-  //                                           price === "$$"? hotel.price === 2 :
-  //                                           price === "$$$"? hotel.price === 3 :
-  //                                           price === "$$$$"? hotel.price === 4 )    */
-
-  //                                          )
-  //   )
-  // })
   useEffect(filterHotels, [dateFrom, dateTo, country, price, size]);
   console.log("hotels", hotels);
   return (
