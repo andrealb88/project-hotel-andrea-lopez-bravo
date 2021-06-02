@@ -53,104 +53,102 @@ function App() {
         if (newDate.from !== "" && newDate.to !== "") {
           const newDateUnix = dateToUnix(newDate);
           setDateUnix(newDateUnix);
+        } else {
+          alert(`la fecha HASTA debe ser mayor a la fecha DESDE`);
         }
-      } else {
-        alert(`la fecha HASTA debe ser mayor a la fecha DESDE`);
       }
     }
   };
-}
-const handlerReset = (e) => {
-  const userDateEmpty = {
-    from: "",
-    to: "",
+  const handlerReset = (e) => {
+    const userDateEmpty = {
+      from: "",
+      to: "",
+    };
+    setDate(userDateEmpty);
+    setDateUnix(userDateEmpty);
+    setCountry("All");
+    setPrice("All");
+    setSize("All");
   };
-  setDate(userDateEmpty);
-  setDateUnix(userDateEmpty);
-  setCountry("All");
-  setPrice("All");
-  setSize("All");
-};
 
-const dateFilteredHotels = () => {
-  let newHotelsFilter = [...hotelsData];
-  if (date.from !== "" && date.to !== "") {
-    // const date = new Date(date);
-    // const dateFromUnix = new Date("${date.from} 00:00:00").valueOf();
-    // const dateToUnix = new Date("${date.to} 00:00:00").valueOf();
-    newHotelsFilter = hotelsData.filter((hotel) => {
-      const canFrom = dateUnix.from >= hotel.availablilityFrom;
-      const canTo = dateUnix.to <= hotel.availabilityTo;
-      return canFrom && canTo;
+  const dateFilteredHotels = () => {
+    let newHotelsFilter = [...hotelsData];
+    if (date.from !== "" && date.to !== "") {
+      // const date = new Date(date);
+      // const dateFromUnix = new Date("${date.from} 00:00:00").valueOf();
+      // const dateToUnix = new Date("${date.to} 00:00:00").valueOf();
+      newHotelsFilter = hotelsData.filter((hotel) => {
+        const canFrom = dateUnix.from >= hotel.availablilityFrom;
+        const canTo = dateUnix.to <= hotel.availabilityTo;
+        return canFrom && canTo;
+      });
+    }
+    setFilterHotels(newHotelsFilter);
+  };
+
+  useEffect(dateFilteredHotels, [date, dateUnix.from, dateUnix.to]);
+
+  useEffect(() => {
+    const filterBySize = (hotel) => {
+      if (size === "All") {
+        return true;
+      } else if (size === "small") {
+        return hotel.rooms <= 10;
+      } else if (size === "medium") {
+        return hotel.rooms > 10 && hotel.rooms <= 20;
+      } else return hotel.rooms > 20;
+    };
+    const filterByCountry = (hotel) => {
+      if (country === "All") {
+        return true;
+      } else return country === hotel.country;
+    };
+    const filterByPrice = (hotel) => {
+      if (price === "All") {
+        return true;
+      } else if (price === "1") {
+        return hotel.price === 1;
+      } else if (price === "2") {
+        return hotel.price === 2;
+      } else if (price === "3") {
+        return hotel.price === 3;
+      } else return hotel.price === 4;
+    };
+
+    const filterHotels = hotelsData.filter((hotel) => {
+      return (
+        filterBySize(hotel) && filterByCountry(hotel) && filterByPrice(hotel)
+      );
     });
-  }
-  setFilterHotels(newHotelsFilter);
-};
-
-useEffect(dateFilteredHotels, [date, dateUnix.from, dateUnix.to]);
-
-useEffect(() => {
-  const filterBySize = (hotel) => {
-    if (size === "All") {
-      return true;
-    } else if (size === "small") {
-      return hotel.rooms <= 10;
-    } else if (size === "medium") {
-      return hotel.rooms > 10 && hotel.rooms <= 20;
-    } else return hotel.rooms > 20;
-  };
-  const filterByCountry = (hotel) => {
-    if (country === "All") {
-      return true;
-    } else return country === hotel.country;
-  };
-  const filterByPrice = (hotel) => {
-    if (price === "All") {
-      return true;
-    } else if (price === "1") {
-      return hotel.price === 1;
-    } else if (price === "2") {
-      return hotel.price === 2;
-    } else if (price === "3") {
-      return hotel.price === 3;
-    } else return hotel.price === 4;
-    }; 
-
-  const filterHotels = hotelsData.filter((hotel) => {
-    return (
-      filterBySize(hotel) && filterByCountry(hotel) && filterByPrice(hotel)
-    );
-  });
-  setFilterHotels(filterHotels);
-}, [size, price, country]); 
-return (
-  <div className="App">
-    <Header />
-    <Filters
-      handlerDate={handlerDate}
-      date={date}
-      handlerCountry={handlerCountry}
-      country={country}
-      handlerPrice={handlerPrice}
-      price={price}
-      handlerSize={handlerSize}
-      size={size}
-      handlerReset={handlerReset}
-    />
-    <div className="result-card">
-      <HotelList filterHotels={filterHotels} />
+    setFilterHotels(filterHotels);
+  }, [size, price, country]);
+  return (
+    <div className="App">
+      <Header />
+      <Filters
+        handlerDate={handlerDate}
+        date={date}
+        handlerCountry={handlerCountry}
+        country={country}
+        handlerPrice={handlerPrice}
+        price={price}
+        handlerSize={handlerSize}
+        size={size}
+        handlerReset={handlerReset}
+      />
+      <div className="result-card">
+        <HotelList filterHotels={filterHotels} />
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
 export default App;
 // setHotels(newHotels);
 
-/// const newFilterHotels = () => (newHotels = [...hotelsData]); 
+/// const newFilterHotels = () => (newHotels = [...hotelsData]);
 // const availableFrom = new Date(hotel.availabilityFrom);
 // const availableTo = new Date(hotel.availabilityTo);
 
 // useEffect(filterHotels, [date, country, price, size]);
 // console.log("hotels", hotels);
-
