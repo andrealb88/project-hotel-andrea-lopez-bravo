@@ -6,27 +6,22 @@ export function Filters(props) {
       <div className="filter-container">
         <label className="filter-label">
         <img src="./assets/svg/svgIngreso.svg" height="15" alt="svg-ingreso"/>   
-      <input 
-      value={props.dateFrom}
-      onChange={props.handlerDateFrom}
-      className="filter-input-date"
-      type="date"
-    ></input>
+      <input  type="date" value={props.date.from}  className="filter-input-date" onChange={({target}) => props.handlerDate("from", target.value)}></input>
     </label>
     <label className="filter-label">
     <img src="./assets/svg/svgEgreso.svg" height="15" alt="svg-Egreso" />
-      <input
+     {/*   <input
       value={props.dateTo}
       onChange={props.handlerDateTo}
       className="filter-input-date"
-      type="date"
-    ></input>
+      type="date" */}
+       <input  type="date"value={props.date.to}  className="filter-input-date" onChange={({target}) => props.handlerDate("to", target.value)}></input>
     </label>
     <label className="filter-label">
-    <img src="./assets/svg/svgWorld.svg" height="15" alt="svg-world" />
+    <img className="imgWorld"src="./assets/svg/svgWorld.svg" height="15" alt="svg-world" />
     <select value={props.country} onChange={props.handlerCountry} className="select-filter">
-    <option value="todos" disabled> Seleccione el país</option>
-      <option value="Todos los paises">Todos los paises</option>
+    <option disabled value="All" > Seleccione el país</option>
+      <option value="todos los paises">Todos los paises</option>
       <option value="Argentina">Argentina</option>
       <option value="Brasil">Brasil</option>
       <option value="Chile">Chile</option>
@@ -36,6 +31,7 @@ export function Filters(props) {
     <label className="filter-label">
     <img className="imgDolar"src="./assets/svg/svgDolar.svg"height="15"alt="svg-ingreso"/>
     <select value={props.price} onChange={props.handlerPrice} className="select-filter">
+    <option  disabled value="All"> Seleccione el precio</option>
       <option value="cualquier precio">Cualquier precio</option>
       <option value="1">$</option>
       <option value="2">$$</option>
@@ -46,12 +42,16 @@ export function Filters(props) {
     <label className="filter-label">
     <img src="./assets/svg/svgRooms.svg" height="15" alt="svg-size"/>
     <select value={props.size} onChange={props.handlerSize} className="select-filter">
-      <option value="all">Cualquier tamaño</option>
+    <option disabled value="All" > Seleccione el tamaño</option>
+      <option value="cualquier tamaño">Cualquier tamaño</option>
       <option value="small">Hotel pequeño</option>
       <option value="medium">Hotel mediano</option>
       <option value="big">Hotel grande</option>
     </select>
     </label>
+    <button className="buttonReset" onClick={props.handlerReset}>
+      Reset
+    </button>
       </div>
     </div>
   );

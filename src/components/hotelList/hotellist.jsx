@@ -1,7 +1,7 @@
 import { Card } from "../card/card.jsx";
 
 export function HotelList(props) {
- return props.hotels.map ((hotel,index) =>{
+ return props.filterHotels.map ((hotel,index) =>{
     return ( 
             <Card
             key={index}

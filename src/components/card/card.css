@@ -1,7 +1,17 @@
-.container-card{
-    display:flex;
-    flex-direction:column;
-    max-width:400px;
-    border:1px solid black;
-    margin:1%;
+.container-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  border: 1px solid black;
+  margin: 1%;
+}
+.whiteDolars {
+  color: white;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.greyDolars {
+  color: #57b5f2;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
