@@ -7,6 +7,34 @@ import {
 
 
 
+
+export let Header = (props) => {
+  return (
+    <div className="header generalFont">
+      <p className="header-title">Hoteles</p>
+      <p className="header-date">
+        {hasAvailableFrom(props.numberDateFrom) && (
+          <p>
+            desde el &nbsp;
+            {props.date.from} &nbsp;
+            {getNaturalMonth(props.numberMonthFrom)} de {props.numberYearFrom}
+            &nbsp;
+          </p>
+        )}
+        {hasAvailableFrom(props.numberDateTo) && (
+          <p>
+            hasta el &nbsp;{props.date.to}&nbsp;
+            {getNaturalMonth(props.numberMonthTo)} de {props.numberYearTo}&nbsp;
+          </p>
+        )}
+        {hasProp(props.country) && <p>en {props.country}&nbsp;</p>}
+        {hasProp(props.size) && <p>tamaño&nbsp;{props.size}</p>}
+        <span></span>
+      </p>
+    </div>
+  );
+};
+
 // export function Header(props) {
 //   let naturalDate = (date) => {
 //     let d = new Date(date + " 00:00"),
@@ -53,32 +81,3 @@ import {
 //     </header>
 //   );
 // }
-
-
-export let Header = (props) => {
-  return (
-    <div className="header generalFont">
-      <p className="header-title">Hoteles</p>
-      <p className="header-date">
-        {hasAvailableFrom(props.numberDateFrom) && (
-          <p>
-            desde el &nbsp;
-            {props.date.from} &nbsp;
-            {getNaturalMonth(props.numberMonthFrom)} de {props.numberYearFrom}
-            &nbsp;
-          </p>
-        )}
-        {hasAvailableFrom(props.numberDateTo) && (
-          <p>
-            hasta el &nbsp;{props.date.to}&nbsp;
-            {getNaturalMonth(props.numberMonthTo)} de {props.numberYearTo}&nbsp;
-          </p>
-        )}
-        {hasProp(props.country) && <p>en {props.country}&nbsp;</p>}
-        {hasProp(props.size) && <p>tamaño&nbsp;{props.size}</p>}
-        <span></span>
-      </p>
-    </div>
-  );
-};
-
