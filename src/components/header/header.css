@@ -1,17 +1,17 @@
-header{
-    background-color: rgb(97, 206, 170);
-    padding: 24px;
-    display:flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    color:white;
+.header-generalFont {
+  background-color: rgb(97, 206, 170);
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: white;
 }
-.header-title{
-    font-size: 18px;
+.header-title {
+  font-size: 18px;
 }
 
-.filters{
-    width: 1000px;
-    height: 150px;
+.filters {
+  width: 1000px;
+  height: 150px;
 }

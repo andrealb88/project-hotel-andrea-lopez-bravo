@@ -1,4 +1,5 @@
 import "./card.css"
+import { alertReserve } from "../utils/card.jsx";
 
 export function Card(props){
     let quantyDolars = ["", ""];
@@ -20,18 +21,42 @@ export function Card(props){
     <img src= {props.photo} alt="imageHotel" />
     <p>{props.name}</p>
     <p>{props.description}</p>  
-    <div>
-    {props.city} , {props.country}
+    <div className = "location-room-price">
+    <div className = "big-container">
+    <div className="blue-container">
+          <img
+            className="svgCardLocate"
+            src="./assets/svg/svgLocate.svg"
+            height="20"
+            alt="locate"
+          />
+        </div>
+        <div className = "box-text">
+          <p className="location">{props.city} ,{props.country}</p>
     </div>
-    <div>
-        <p>{props.rooms} habitaciones </p>
     </div>
-    <div>
-        <p>{props.price} </p>
+    <div className = "big-container" >
+    <div className="blue-container">
+          <img
+            className="svgCardLocate"
+            src="./assets/svg/svgCardRooms.svg"
+            height="15"
+            alt="locate"
+          />
+          </div>
+          <div className = "box-text">
+             <p>{props.rooms} habitaciones </p>
+          </div>
+    </div>
+    </div>
+    <div className = "price-container">
+        {/* <p>{props.price} </p> */}
         <span className="whiteDolars">{quantyDolars[0]}</span>
         <span className="greyDolars">{quantyDolars[1]}</span>
     </div>
-    <button className="card-button">Reservar</button>
+  
+    <button className="card-button" onClick={alertReserve}>
+      Reservar</button>
     </div>    
     )
 }

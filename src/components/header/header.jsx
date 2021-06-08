@@ -3,14 +3,14 @@ import {
   hasProp,
   hasAvailableFrom,
   getNaturalMonth
-} from "./components/utils/header.jsx";
+} from "../utils/header.jsx";
 
 
 
 
 export let Header = (props) => {
   return (
-    <div className="header generalFont">
+    <div className="header-generalFont">
       <p className="header-title">Hoteles</p>
       <p className="header-date">
         {hasAvailableFrom(props.numberDateFrom) && (
