@@ -11,7 +11,7 @@ import {
 export let Header = (props) => {
   return (
     <div className="header-generalFont">
-      <p className="header-title">Hoteles</p>
+      <div className="header-title">Hoteles</div>
       <p className="header-date">
         {hasAvailableFrom(props.numberDateFrom) && (
           <p>

@@ -50,7 +50,7 @@
   width: 80%;
 }
 
-.select-filter hover {
+.select-filter:hover {
   -webkit-appearance: none;
 }
 .buttonReset {
