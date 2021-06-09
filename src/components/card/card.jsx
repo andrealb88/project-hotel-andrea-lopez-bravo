@@ -1,5 +1,5 @@
 import "./card.css"
-import { alertReserve } from "../utils/card.jsx";
+import { alertReserve } from "../utils/cardutils.jsx";
 
 export function Card(props){
     let quantyDolars = ["", ""];

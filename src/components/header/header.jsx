@@ -3,7 +3,7 @@ import {
   hasProp,
   hasAvailableFrom,
   getNaturalMonth
-} from "../utils/header.jsx";
+} from "../utils/headerutils.jsx";
 
 
 
@@ -12,7 +12,7 @@ export let Header = (props) => {
   return (
     <div className="header-generalFont">
       <div className="header-title">Hoteles</div>
-      <p className="header-date">
+      <div className="header-date">
         {hasAvailableFrom(props.numberDateFrom) && (
           <p>
             desde el &nbsp;
@@ -30,7 +30,7 @@ export let Header = (props) => {
         {hasProp(props.country) && <p>en {props.country}&nbsp;</p>}
         {hasProp(props.size) && <p>tamaño&nbsp;{props.size}</p>}
         <span></span>
-      </p>
+      </div>
     </div>
   );
 };
