@@ -3,7 +3,7 @@ import {
   hasProp,
   hasAvailableFrom,
   getNaturalMonth
-} from "../utils/headerutils.jsx";
+} from "../utils/headerUtils.jsx";
 
 
 

@@ -8,7 +8,7 @@ import {
   dateToUnix,
   beforeDateStatus,
   dateUnixFromInput,
-} from "./components/utils/dateutils";
+} from "./components/utils/dateUtils";
 
 function App() {
   const [size, setSize] = useState("All");
