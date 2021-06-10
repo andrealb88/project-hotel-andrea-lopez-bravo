@@ -23,6 +23,12 @@ function App() {
     from: "",
     to: "",
   });
+  const [numberMonthTo, setNumberMonthTo] = useState();
+  const [numberYearTo, setNumberYearTo] = useState();
+  const [numberMonthFrom, setNumberMonthFrom] = useState();
+  const [numberYearFrom, setNumberYearFrom] = useState();
+  const [availableFrom, setAvailableFrom] = useState("");
+  const [availableTo, setAvailableTo] = useState("");
 
   const handlerCountry = (e) => {
     const country = e.target.value;
@@ -38,6 +44,7 @@ function App() {
   };
   const handlerDate = (key, value) => {
     // setDate({ ...date, [key]: value });
+
     if (beforeDateStatus(value)) {
       alert(`Seleccione una fecha igual o posterior a la fecha de hoy`);
     } else {
@@ -59,6 +66,31 @@ function App() {
       }
     }
   };
+  const handlerNumberMonthTo = (e) => {
+    const numberMonthTo = e.target.value;
+    setNumberMonthTo(numberMonthTo);
+  };
+  const handlerNumberMonthFrom = (e) => {
+    const numberMonthFrom = e.target.value;
+    setNumberMonthFrom(numberMonthFrom);
+  };
+  const handlerNumberYearTo = (e) => {
+    const numberYearTo = e.target.value;
+    setNumberYearTo(numberYearTo);
+  };
+  const handlerNumberYearFrom = (e) => {
+    const numberYearFrom = e.target.value;
+    setNumberYearFrom(numberYearFrom);
+  };
+  const handlerAvailableFrom = (e) => {
+    const availableFrom = e.target.value;
+    setAvailableFrom(availableFrom);
+  };
+  const handlerAvailableTo = (e) => {
+    const availableTo = e.target.value;
+    setAvailableTo(availableTo);
+  };
+
   const handlerReset = (e) => {
     const userDateEmpty = {
       from: "",
@@ -69,6 +101,12 @@ function App() {
     setCountry("All");
     setPrice("All");
     setSize("All");
+    setAvailableFrom("");
+    setAvailableTo("");
+    setNumberMonthFrom("");
+    setNumberMonthTo("");
+    setNumberYearTo("");
+    setNumberYearFrom("");
   };
 
   const dateFilteredHotels = () => {
@@ -124,7 +162,23 @@ function App() {
   }, [size, price, country]);
   return (
     <div className="App">
-      <Header />
+      <Header
+        // handlerDate={handlerDate}
+        date={date}
+        // handlerCountry={handlerCountry}
+        country={country}
+        // handlerPrice={handlerPrice}
+        price={price}
+        // handlerSize={handlerSize}
+        size={size}
+        // handlerReset={handlerReset}
+        numberMonthTo={numberMonthTo}
+        numberYearTo={numberYearTo}
+        availableTo={availableTo}
+        availableFrom={availableFrom}
+        numberMonthFrom={numberMonthFrom}
+        numberYearFrom={numberYearFrom}
+      />
       <Filters
         handlerDate={handlerDate}
         date={date}
