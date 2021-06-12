@@ -27,8 +27,6 @@ function App() {
   const [numberYearTo, setNumberYearTo] = useState();
   const [numberMonthFrom, setNumberMonthFrom] = useState();
   const [numberYearFrom, setNumberYearFrom] = useState();
-  const [availableFrom, setAvailableFrom] = useState("");
-  const [availableTo, setAvailableTo] = useState("");
 
   const handlerCountry = (e) => {
     const country = e.target.value;
@@ -66,6 +64,7 @@ function App() {
       }
     }
   };
+
   const handlerNumberMonthTo = (e) => {
     const numberMonthTo = e.target.value;
     setNumberMonthTo(numberMonthTo);
@@ -82,14 +81,6 @@ function App() {
     const numberYearFrom = e.target.value;
     setNumberYearFrom(numberYearFrom);
   };
-  const handlerAvailableFrom = (e) => {
-    const availableFrom = e.target.value;
-    setAvailableFrom(availableFrom);
-  };
-  const handlerAvailableTo = (e) => {
-    const availableTo = e.target.value;
-    setAvailableTo(availableTo);
-  };
 
   const handlerReset = (e) => {
     const userDateEmpty = {
@@ -101,8 +92,6 @@ function App() {
     setCountry("All");
     setPrice("All");
     setSize("All");
-    setAvailableFrom("");
-    setAvailableTo("");
     setNumberMonthFrom("");
     setNumberMonthTo("");
     setNumberYearTo("");
@@ -172,12 +161,14 @@ function App() {
         // handlerSize={handlerSize}
         size={size}
         // handlerReset={handlerReset}
+        handlerNumberMonthTo={handlerNumberMonthTo}
         numberMonthTo={numberMonthTo}
+        handlerNumberYearTo={handlerNumberYearTo}
         numberYearTo={numberYearTo}
-        availableTo={availableTo}
-        availableFrom={availableFrom}
-        numberMonthFrom={numberMonthFrom}
+        handlerNumberYearFrom={handlerNumberYearFrom}
         numberYearFrom={numberYearFrom}
+        handlerNumberMonthFrom={handlerNumberMonthFrom}
+        numberMonthFrom={numberMonthFrom}
       />
       <Filters
         handlerDate={handlerDate}
