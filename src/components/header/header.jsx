@@ -3,7 +3,7 @@ import {
   hasProp,
   hasAvailableFrom,
   getNaturalMonth
-} from "../utils/headerUtils.jsx";
+} from "../utils/headerX.jsx";
 
 
 export let Header = (props) => {
