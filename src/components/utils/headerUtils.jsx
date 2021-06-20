@@ -1,83 +1,48 @@
 export function hasProp(propToCheck) {
-    if (propToCheck === "todos") {
-      return false;
-    } else {
-      return true;
-    }
+  if (propToCheck === "todos") {
+    return false;
+  } else {
+    return true;
   }
-  
-  /* export function hasCountry(propCountry) {
-    if (propCountry === "todos") {
-      return false;
-    } else {
-      return true;
-    }
-  } */
-  
-  export function hasAvailableFrom(propsNumbersDate) {
-    if (!propsNumbersDate) {
-      return false;
-    } else {
-      return true;
-    }
+}
+
+export function hasAvailableFrom(propsNumbersDate) {
+  if (!propsNumbersDate) {
+    return false;
+  } else {
+    return true;
   }
-  
-  export function getNaturalMonth(numberMonth) {
-    const months = [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre"
-    ];
-    let naturalMonth = "";
-    switch (numberMonth) {
-      case 0:
-        naturalMonth = months[0];
-        break;
-      case 1:
-        naturalMonth = months[1];
-        break;
-      case 2:
-        naturalMonth = months[2];
-        break;
-      case 3:
-        naturalMonth = months[3];
-        break;
-      case 4:
-        naturalMonth = months[4];
-        break;
-      case 5:
-        naturalMonth = months[5];
-        break;
-      case 6:
-        naturalMonth = months[6];
-        break;
-      case 7:
-        naturalMonth = months[7];
-        break;
-      case 8:
-        naturalMonth = months[8];
-        break;
-      case 9:
-        naturalMonth = months[9];
-        break;
-      case 10:
-        naturalMonth = months[10];
-        break;
-      case 11:
-        naturalMonth = months[11];
-        break;
-      default:
-        break;
-    }
-    return naturalMonth;
-  }
-  
+}
+
+export const getNaturalDate = (date) => {
+  let d = new Date(date + " 00:00"),
+    month = d.getMonth(),
+    day = d.getDate(),
+    year = d.getFullYear();
+
+  if (month === 0) {
+    month = "Enero";
+  } else if (month === 1) {
+    month = "Febrero";
+  } else if (month === 2) {
+    month = "Marzo";
+  } else if (month === 3) {
+    month = "Abril";
+  } else if (month === 4) {
+    month = "Mayo";
+  } else if (month === 5) {
+    month = "Junio";
+  } else if (month === 6) {
+    month = "Julio";
+  } else if (month === 7) {
+    month = "Agosto";
+  } else if (month === 8) {
+    month = "Septiembre";
+  } else if (month === 9) {
+    month = "Octubre";
+  } else if (month === 10) {
+    month = "Noviembre";
+  } else month = "Diciembre";
+
+  return `${day} de ${month} del ${year}`;
+};

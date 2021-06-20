@@ -1,33 +1,20 @@
 import "./header.css";
-import {
-  hasProp,
-  hasAvailableFrom,
-  getNaturalMonth
-} from "../utils/headerUtils.jsx";
-
+import { getNaturalDate } from "../utils/headerUtils.jsx";
 
 export let Header = (props) => {
   return (
-    <div className="header-generalFont">
-      <div className="header-title">Hoteles</div>
-      <div className="header-date">
-        {hasAvailableFrom(props.date.From) && (
-          <p>
-            desde el &nbsp;{props.date.from} &nbsp;
-            {getNaturalMonth(props.numberMonthFrom)} de {props.numberYearFrom}
-            &nbsp;
-          </p>
-        )}
-        {hasAvailableFrom(props.date.to) && (
-          <p>
-            hasta el &nbsp;{props.date.to}&nbsp;
-            {getNaturalMonth(props.numberMonthTo)} de {props.numberYearTo}&nbsp;
-          </p>
-        )}
-        {hasProp(props.country) && <p>en {props.country}&nbsp;</p>}
-        {hasProp(props.size) && <p>tamaño&nbsp;{props.size}</p>}
-        <span></span>
+    <header className="header">
+      <div className="flex-row">
+        <h1 className="header-title">Hoteles</h1>
       </div>
-    </div>
+      <h2 className="font-roboto-detail-header">{`Búsqueda para hoteles: 
+      ${props.size === "all" ? "cualquier tamaño" : props.size}, 
+      de precio ${
+        props.price === "all" ? "indefinido" : `nivel: ${props.price}`
+      }, 
+      desde el ${!props.date.from ? "___" : getNaturalDate(props.date.from)} 
+      hasta el ${!props.date.to ? "___" : getNaturalDate(props.date.to)} 
+      en ${props.country === "all" ? "todos los países" : props.country}`}</h2>
+    </header>
   );
 };

@@ -1,3 +1,3 @@
 export function alertReserve() {
-    window.alert("Reservaste!!!");
+  window.alert("Reservaste!!!");
 }

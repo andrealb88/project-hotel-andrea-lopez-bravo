@@ -41,8 +41,6 @@ function App() {
     setSize(size);
   };
   const handlerDate = (key, value) => {
-    // setDate({ ...date, [key]: value });
-
     if (beforeDateStatus(value)) {
       alert(`Seleccione una fecha igual o posterior a la fecha de hoy`);
     } else {
@@ -101,9 +99,6 @@ function App() {
   const dateFilteredHotels = () => {
     let newHotelsFilter = [...hotelsData];
     if (date.from !== "" && date.to !== "") {
-      // const date = new Date(date);
-      // const dateFromUnix = new Date("${date.from} 00:00:00").valueOf();
-      // const dateToUnix = new Date("${date.to} 00:00:00").valueOf();
       newHotelsFilter = hotelsData.filter((hotel) => {
         const canFrom = dateUnix.from >= hotel.availablilityFrom;
         const canTo = dateUnix.to <= hotel.availabilityTo;
@@ -152,15 +147,10 @@ function App() {
   return (
     <div className="App">
       <Header
-        // handlerDate={handlerDate}
         date={date}
-        // handlerCountry={handlerCountry}
         country={country}
-        // handlerPrice={handlerPrice}
         price={price}
-        // handlerSize={handlerSize}
         size={size}
-        // handlerReset={handlerReset}
         handlerNumberMonthTo={handlerNumberMonthTo}
         numberMonthTo={numberMonthTo}
         handlerNumberYearTo={handlerNumberYearTo}
@@ -189,11 +179,3 @@ function App() {
 }
 
 export default App;
-// setHotels(newHotels);
-
-/// const newFilterHotels = () => (newHotels = [...hotelsData]);
-// const availableFrom = new Date(hotel.availabilityFrom);
-// const availableTo = new Date(hotel.availabilityTo);
-
-// useEffect(filterHotels, [date, country, price, size]);
-// console.log("hotels", hotels);
