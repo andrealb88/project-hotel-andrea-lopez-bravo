@@ -100,7 +100,11 @@
 .description {
   text-align: justify;
   margin: 15px 0 0 0;
+  color: grey;
+  font-family: "Roboto", sans-serif;
 }
 .hotel-title {
   margin: 15px 0 0 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
 }
