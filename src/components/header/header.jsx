@@ -1,5 +1,6 @@
 import "./header.css";
 import { getNaturalDate } from "../utils/headerUtils.jsx";
+import React from "react";
 
 export let Header = (props) => {
   return (

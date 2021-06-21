@@ -1,4 +1,5 @@
 import { Card } from "../card/card.jsx";
+import React from "react";
 
 export function HotelList(props) {
   return props.filterHotels.map((hotel, index) => {
