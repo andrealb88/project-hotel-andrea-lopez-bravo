@@ -15,7 +15,7 @@ export function Filters(props) {
             value={props.date.from}
             className="filter-input-date"
             onChange={({ target }) => props.handlerDate("from", target.value)}
-          ></input>
+            />
         </label>
         <label className="filter-label">
           <img src="./assets/svg/svgEgreso.svg" height="15" alt="svg-Egreso" />
@@ -24,7 +24,7 @@ export function Filters(props) {
             value={props.date.to}
             className="filter-input-date"
             onChange={({ target }) => props.handlerDate("to", target.value)}
-          ></input>
+          />
         </label>
         <label className="filter-label">
           <img

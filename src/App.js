@@ -9,6 +9,7 @@ import {
   beforeDateStatus,
   dateUnixFromInput,
 } from "./components/utils/dateUtils";
+import { Footer } from "./components/footer/footer";
 
 function App() {
   const [size, setSize] = useState("All");
@@ -174,6 +175,7 @@ function App() {
       <div className="result-card">
         <HotelList filterHotels={filterHotels} />
       </div>
+      <Footer />
     </div>
   );
 }

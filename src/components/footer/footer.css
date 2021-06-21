@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+.footer {
+  background: rgb(0, 157, 245);
+  color: white;
+  padding: 0.5% 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.font-roboto-footer {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-footer {
+  flex: 4;
+  justify-content: center;
+  display: flex;
+}
+
+.container-icono-footer {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 0%;
+}
+
+.fab {
+  color: white;
+}
+.icono-footer:hover {
+  transform: scale(2, 2);
+}
+
+@media only screen and (min-width: 768px) {
+  .footer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .text-footer {
+    justify-content: initial;
+    align-items: center;
+    display: flex;
+  }
+
+  .container-icono-footer {
+    justify-content: space-around;
+  }
+}
