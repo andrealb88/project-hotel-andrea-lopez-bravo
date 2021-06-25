@@ -1,18 +1,4 @@
-export function hasProp(propToCheck) {
-  if (propToCheck === "todos") {
-    return false;
-  } else {
-    return true;
-  }
-}
 
-export function hasAvailableFrom(propsNumbersDate) {
-  if (!propsNumbersDate) {
-    return false;
-  } else {
-    return true;
-  }
-}
 
 export const getNaturalDate = (date) => {
   let d = new Date(date + " 00:00"),

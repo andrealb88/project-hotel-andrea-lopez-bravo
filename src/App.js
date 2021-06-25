@@ -5,6 +5,7 @@ import { HotelList } from "./components/hotellist/hotellist.jsx";
 import { Header } from "./components/header/header";
 import { hotelsData } from "./components/hotels";
 import { Filters } from "./components/filter/filter";
+import { Card } from "./components/card/card";
 import {
   dateToUnix,
   beforeDateStatus,
@@ -175,6 +176,37 @@ function App() {
       />
       <div className="result-card">
         <HotelList filterHotels={filterHotels} />
+        <div className="container-cards">
+          {filterHotels.length > 0 ? (
+            filterHotels.map((hotel, index) => (
+              <Card
+                key={index}
+                name={hotel.name}
+                photo={hotel.photo}
+                description={hotel.description}
+                rooms={hotel.rooms}
+                city={hotel.city}
+                country={hotel.country}
+                price={hotel.price}
+              />
+            ))
+          ) : (
+            <div className="container-no-result">
+              <h2 className="font-roboto">Lo sentimos</h2>
+              <p className="font-roboto">
+                No hemos encontrado resultados coincidentes con los filtros
+                aplicados.
+                <br />
+                Le sugerimos realizar una nueva busqueda aplicando otros
+                parámetros.
+                <br />
+                <br />
+                Para inicializar una nueva busqueda debe limpiar los filtros
+                preexistentes
+              </p>
+            </div>
+          )}
+        </div>
       </div>
       <Footer />
     </div>
