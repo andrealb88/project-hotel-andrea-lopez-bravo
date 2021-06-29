@@ -1,5 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
 .App {
   text-align: center;
+}
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  line-height: 1.5;
 }
 
 .container-no-result {
@@ -11,16 +18,26 @@
   align-items: center;
   padding: 0px 3%;
   text-align: center;
+  background-color: #f0f0f0;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  box-shadow: -5px 6px 17px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 4px 0 0 4px;
 }
 .container-cards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 .result-card {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+.not-found {
+  width: 100px;
+  margin-bottom: 3%;
+  margin-top: 3%;
 }

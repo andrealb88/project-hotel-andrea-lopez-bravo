@@ -193,16 +193,14 @@ function App() {
           ) : (
             <div className="container-no-result">
               <h2 className="font-roboto">Lo sentimos</h2>
+              <img className="not-found" src="images/not-found.png" />
               <p className="font-roboto">
-                No hemos encontrado resultados coincidentes con los filtros
-                aplicados.
+                No se han encontrado resultados coincidentes con la busqueda.
                 <br />
-                Le sugerimos realizar una nueva busqueda aplicando otros
-                parámetros.
-                <br />
+                Lesugerimos realizar una nueva busqueda.
                 <br />
                 Para inicializar una nueva busqueda debe limpiar los filtros
-                preexistentes
+                preexistentes.
               </p>
             </div>
           )}
