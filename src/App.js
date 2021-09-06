@@ -3,17 +3,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { HotelList } from "./components/hotellist/hotellist.jsx";
 import { Header } from "./components/header/header";
-import { hotelsData } from "./components/hotels";
+import { Error } from "./components/error/error";
+import { hotelsData } from "./hotels";
 import { Filters } from "./components/filter/filter";
 import { Card } from "./components/card/card";
-import {
-  dateToUnix,
-  beforeDateStatus,
-  dateUnixFromInput,
-} from "./components/utils/dateUtils";
+import { dateToUnix, beforeDateStatus } from "./utils/dateUtils";
 import { Footer } from "./components/footer/footer";
 
-function App() {
+export default function App() {
   const [size, setSize] = useState("All");
   const [filterHotels, setFilterHotels] = useState([hotelsData]);
   const [price, setPrice] = useState("All");
@@ -47,25 +44,19 @@ function App() {
     if (beforeDateStatus(value)) {
       alert(`Seleccione una fecha igual o posterior a la fecha de hoy`);
     } else {
-      if (key === "from") {
-        const newDate = { ...date, [key]: value };
-        setDate(newDate);
-      } else if (
-        key === "to" &&
-        dateUnixFromInput(value) >= dateUnixFromInput(date.from)
-      ) {
-        const newDate = { ...date, [key]: value };
-        setDate(newDate);
-        if (newDate.from !== "" && newDate.to !== "") {
-          const newDateUnix = dateToUnix(newDate);
-          setDateUnix(newDateUnix);
-        } else {
-          alert(`la fecha HASTA debe ser mayor a la fecha DESDE`);
-        }
+      const newDate = { ...date, [key]: value };
+
+      if (new Date(newDate.from) > new Date(newDate.to)) {
+        alert(`la fecha DESDE debe ser menor a la fecha HASTA`);
+      } else if (new Date(newDate.to) < new Date(newDate.from)) {
+        alert(`la fecha HASTA debe ser mayor a la fecha DESDE`);
+      } else setDate(newDate);
+      if (newDate.from !== "" && newDate.to !== "") {
+        const newDateUnix = dateToUnix(newDate);
+        setDateUnix(newDateUnix);
       }
     }
   };
-
   const handlerNumberMonthTo = (e) => {
     const numberMonthTo = e.target.value;
     setNumberMonthTo(numberMonthTo);
@@ -82,7 +73,6 @@ function App() {
     const numberYearFrom = e.target.value;
     setNumberYearFrom(numberYearFrom);
   };
-
   const handlerReset = (e) => {
     const userDateEmpty = {
       from: "",
@@ -98,22 +88,10 @@ function App() {
     setNumberYearTo("");
     setNumberYearFrom("");
   };
-
-  const dateFilteredHotels = () => {
-    let newHotelsFilter = [...hotelsData];
-    if (date.from !== "" && date.to !== "") {
-      newHotelsFilter = hotelsData.filter((hotel) => {
-        const canFrom = dateUnix.from >= hotel.availablilityFrom;
-        const canTo = dateUnix.to <= hotel.availabilityTo;
-        return canFrom && canTo;
-      });
-    }
-    setFilterHotels(newHotelsFilter);
-  };
-
-  useEffect(dateFilteredHotels, [date, dateUnix.from, dateUnix.to]);
-
   useEffect(() => {
+    const filterByDate = (hotel) =>
+      (!dateUnix.from || dateUnix.from >= hotel.availabilityFrom) &&
+      (!dateUnix.to || dateUnix.to <= hotel.availabilityTo);
     const filterBySize = (hotel) => {
       if (size === "All") {
         return true;
@@ -140,13 +118,15 @@ function App() {
       } else return hotel.price === 4;
     };
 
-    const filterHotels = hotelsData.filter((hotel) => {
-      return (
-        filterBySize(hotel) && filterByCountry(hotel) && filterByPrice(hotel)
-      );
-    });
+    const filterHotels = hotelsData.filter(
+      (hotel) =>
+        filterBySize(hotel) &&
+        filterByCountry(hotel) &&
+        filterByPrice(hotel) &&
+        filterByDate(hotel)
+    );
     setFilterHotels(filterHotels);
-  }, [size, price, country]);
+  }, [size, price, country, date]);
   return (
     <div className="App">
       <Header
@@ -191,18 +171,7 @@ function App() {
               />
             ))
           ) : (
-            <div className="container-no-result">
-              <h2 className="font-roboto">Lo sentimos</h2>
-              <img className="not-found" src="images/not-found.png" />
-              <p className="font-roboto">
-                No se han encontrado resultados coincidentes con la busqueda.
-                <br />
-                Lesugerimos realizar una nueva busqueda.
-                <br />
-                Para inicializar una nueva busqueda debe limpiar los filtros
-                preexistentes.
-              </p>
-            </div>
+            <Error />
           )}
         </div>
       </div>
@@ -210,5 +179,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

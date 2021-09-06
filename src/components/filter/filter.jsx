@@ -16,7 +16,7 @@ export function Filters(props) {
             value={props.date.from}
             className="filter-input-date"
             onChange={({ target }) => props.handlerDate("from", target.value)}
-            />
+          />
         </label>
         <label className="filter-label">
           <img src="./assets/svg/svgEgreso.svg" height="15" alt="svg-Egreso" />
@@ -39,11 +39,8 @@ export function Filters(props) {
             onChange={props.handlerCountry}
             className="select-filter"
           >
-            <option disabled value="All">
-              {" "}
-              Seleccione el país
-            </option>
-            <option value="todos los paises">Todos los paises</option>
+            <option>Seleccione el país</option>
+            <option value="All">Todos los paises</option>
             <option value="Argentina">Argentina</option>
             <option value="Brasil">Brasil</option>
             <option value="Chile">Chile</option>
@@ -62,11 +59,8 @@ export function Filters(props) {
             onChange={props.handlerPrice}
             className="select-filter"
           >
-            <option disabled value="All">
-              {" "}
-              Seleccione el precio
-            </option>
-            <option value="cualquier precio">Cualquier precio</option>
+            <option> Seleccione el precio</option>
+            <option value="All">Cualquier precio</option>
             <option value="1">$</option>
             <option value="2">$$</option>
             <option value="3">$$$</option>
@@ -80,11 +74,8 @@ export function Filters(props) {
             onChange={props.handlerSize}
             className="select-filter"
           >
-            <option disabled value="All">
-              {" "}
-              Seleccione el tamaño
-            </option>
-            <option value="cualquier tamaño">Cualquier tamaño</option>
+            <option>Seleccione el tamaño</option>
+            <option value="All">Cualquier tamaño</option>
             <option value="small">Hotel pequeño</option>
             <option value="medium">Hotel mediano</option>
             <option value="big">Hotel grande</option>

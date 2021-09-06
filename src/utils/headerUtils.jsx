@@ -1,7 +1,5 @@
-
-
 export const getNaturalDate = (date) => {
-  let d = new Date(date + " 00:00"),
+  let d = new Date(date + " 00:00:00:00"),
     month = d.getMonth(),
     day = d.getDate(),
     year = d.getFullYear();

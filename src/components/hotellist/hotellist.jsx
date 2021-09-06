@@ -16,5 +16,4 @@ export function HotelList(props) {
       />
     );
   });
-
 }

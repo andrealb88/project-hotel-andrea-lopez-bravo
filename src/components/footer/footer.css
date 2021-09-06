@@ -26,8 +26,9 @@
   align-items: center;
   padding: 1% 0%;
 }
-.fab {
-  color: white;
+.icono-footer {
+  margin-left: 3%;
+  margin-right: 3%;
 }
 .icono-footer:hover {
   transform: scale(2, 2);
